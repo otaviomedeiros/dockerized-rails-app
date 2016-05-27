@@ -12,6 +12,18 @@ redis:
   ports:
     - '6379:6379'
 
+sidekiq:
+  build: .
+  container_name: sidekiq
+  links:
+    - redis
+    - postgres
+  volumes:
+    - .:/app
+  env_file:
+    - .dev.env
+  command: bundle exec sidekiq -C config/sidekiq.yml
+
 app:
   build: .
   container_name: app
