@@ -24,6 +24,16 @@ sidekiq:
     - .dev.env
   command: bundle exec sidekiq -C config/sidekiq.yml
 
+nginx:
+  build: ./docker-images/nginx
+  container_name: nginx
+  volumes:
+    - /var/log/nginx:/var/log/nginx
+  links:
+    - app
+  ports:
+    - '8080:8080'
+
 app:
   build: .
   container_name: app
