@@ -1,7 +1,19 @@
+postgres:
+  image: postgres:9.5.3
+  container_name: postgres
+  volumes:
+    - /var/lib/docker/volumes/postgresql/data:/var/lib/postgresql/data
+  ports:
+    - '5432:5432'
+
 app:
   build: .
   container_name: app
   volumes:
     - .:/app
+  links:
+    - postgres
+  env_file:
+    - .dev.env
   ports:
     - '3000:3000'
