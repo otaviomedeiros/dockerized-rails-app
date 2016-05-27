@@ -6,6 +6,12 @@ postgres:
   ports:
     - '5432:5432'
 
+redis:
+  image: redis:3.2.0
+  container_name: redis
+  ports:
+    - '6379:6379'
+
 app:
   build: .
   container_name: app
@@ -13,6 +19,7 @@ app:
     - .:/app
   links:
     - postgres
+    - redis
   env_file:
     - .dev.env
   ports:
