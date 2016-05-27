@@ -15,7 +15,7 @@
     <% @code_snippets.each do |code_snippet| %>
       <tr>
         <td><%= code_snippet.description %></td>
-        <td><%= code_snippet.code %></td>
+        <td><%= code_snippet.code.html_safe %></td>
         <td><%= link_to 'Show', code_snippet %></td>
         <td><%= link_to 'Edit', edit_code_snippet_path(code_snippet) %></td>
         <td><%= link_to 'Destroy', code_snippet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

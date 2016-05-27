@@ -15,6 +15,7 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'puma'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug'
