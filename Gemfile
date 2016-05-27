@@ -14,6 +14,7 @@ gem 'redis-rails'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'

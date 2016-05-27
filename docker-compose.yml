@@ -29,7 +29,7 @@ nginx:
   container_name: nginx
   volumes:
     - /var/log/nginx:/var/log/nginx
-  links:
+  volumes_from:
     - app
   ports:
     - '8080:8080'
@@ -39,10 +39,10 @@ app:
   container_name: app
   volumes:
     - .:/app
+    - /var/run/app-socket:/var/run/app-socket
   links:
     - postgres
     - redis
   env_file:
     - .dev.env
-  ports:
-    - '3000:3000'
+  command: bundle exec puma -C config/puma.rb
